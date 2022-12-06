@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:wallpaperapp/listcard2.dart';
+import 'package:wallpaperapp/secondscreen.dart';
 import 'listcard2.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Indexpage(),
+      home: SecondScreen(),
     );
   }
 }
@@ -104,7 +104,7 @@ class Indexpage extends StatelessWidget {
 
           InkWell(
             onTap: () {
-              print('working');
+              //print('working');
             },
             child: Container(
               height: 50.0,
