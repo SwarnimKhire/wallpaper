@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'blockspage.dart';
+import 'package:wallpaperapp/scrollcategory.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({Key? key}) : super(key: key);
@@ -24,12 +24,10 @@ class _SecondScreenState extends State<SecondScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: SafeArea(
-        // ignore: prefer_const_literals_to_create_immutables
         child: Padding(
           padding: const EdgeInsets.all(25.0),
-          // ignore: prefer_const_literals_to_create_immutables
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TextField(
                 // obscureText: true,
@@ -54,7 +52,6 @@ class _SecondScreenState extends State<SecondScreen> {
                 height: 30.0,
               ),
               Expanded(
-                flex: 1,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
@@ -87,13 +84,8 @@ class _SecondScreenState extends State<SecondScreen> {
                   ],
                 ),
               ),
-
-              // SizedBox(
-              //   height: 10.0,
-              // ),
-
               Container(
-                alignment: Alignment.centerLeft,
+                //alignment: Alignment.centerLeft,
                 height: 100.0,
                 width: 150.0,
                 decoration: const BoxDecoration(
@@ -107,7 +99,7 @@ class _SecondScreenState extends State<SecondScreen> {
                     return Row(
                       children: [
                         Container(
-                          alignment: Alignment.centerLeft,
+                          //alignment: Alignment.centerLeft,
                           height: 100.0,
                           width: 150.0,
                           decoration: const BoxDecoration(
@@ -131,32 +123,37 @@ class _SecondScreenState extends State<SecondScreen> {
               ),
               const Text(
                 "Most Viewing",
-                textAlign: TextAlign.left,
+                //RtextAlign: TextAlign.left,
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 25.0,
                     letterSpacing: 2.0),
               ),
-              // Container(
-              //   alignment: Alignment.centerLeft,
-              //   child: ListView.builder(
-              //     scrollDirection: Axis.horizontal,
-              //     itemBuilder: (context, index) {
-              //       return Row(
-              //         children: [
-              //           Image.network(b[index]),
-              //           const SizedBox(
-              //             width: 20.0,
-              //           ),
-              //           blockpage("Animations",
-              //               "The last update wallpaper \n animation in here."),
-              //         ],
-              //       );
-              //     },
-              //     itemCount: b.length,
-              //   ),
-              // ),
+              SizedBox(
+                height: 20.0,
+              ),
+              scrollcard("Animation", "The latest update wallpaper \n in here.",
+                  'https://cdn.britannica.com/26/175326-050-8E3D0CF1/scene-Dumbo.jpg'),
+              SizedBox(
+                height: 15.0,
+              ),
+              scrollcard(
+                  "Nature",
+                  "Best nature wallpapere here \n here ready to use",
+                  'https://www.rd.com/wp-content/uploads/2020/04/GettyImages-1093840488-5-scaled.jpg'),
+              SizedBox(
+                height: 15.0,
+              ),
+              scrollcard("Abstract", "To find abstract wallpaper \n tap here.",
+                  'https://thevirtualinstructor.com/blog/wp-content/uploads/2013/08/understanding-abstract-art.jpg'),
+              SizedBox(
+                height: 15.0,
+              ),
+              scrollcard("Minimalist", "The minimalist wallpaper \n are here.",
+                  'https://assets-news.housing.com/news/wp-content/uploads/2022/02/18205828/Minimalist-interior-design-Tips-to-make-your-home-look-minimal.jpg'),
+              // scrollcategory(),
+              // scrollcategory(),
             ],
           ),
         ),
@@ -187,9 +184,9 @@ class _SecondScreenState extends State<SecondScreen> {
   ];
 
   List b = [
-    "https://unsplash.com/photos/Ez7FAxs26WU",
-    "https://unsplash.com/photos/g0bZhMHJiII",
-    "https://unsplash.com/photos/V1zEFH3f0Tk",
-    "https://unsplash.com/photos/jMFBpjnPPlk"
+    "https://img.freepik.com/premium-photo/vertical-close-up-four-people-enjoying-christmas-dinner-together-toasting-with-champagne-glas_236854-34180_960_720.jpg",
+    "https://img.freepik.com/premium-photo/giant-christmas-tree-with-golden-decorations-gift-boxes-it-concept-seasonal-holidays-new-year-party_151383-291_960_720.jpg",
+    "https://img.freepik.com/free-photo/cute-christmas-background-with-bokeh_1361-3548.jpg?w=996&t=st=1670399565~exp=1670400165~hmac=364c91df535fdad3ec7c1a354a7ec9f51c267b2fe1210b65234b959e1f78ddcf",
+    "https://images.unsplash.com/photo-1670355548794-18c0505584b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
   ];
 }

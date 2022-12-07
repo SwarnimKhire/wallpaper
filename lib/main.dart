@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaperapp/listcard2.dart';
+import 'package:wallpaperapp/scrollcategory.dart';
 import 'package:wallpaperapp/secondscreen.dart';
 import 'listcard2.dart';
 
@@ -24,6 +25,7 @@ class Indexpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: Colors.white,
       // appBar: AppBar(
       //   backgroundColor: Color(0xFFa7bfef),
