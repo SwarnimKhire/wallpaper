@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaperapp/indexpage.dart';
+import 'package:wallpaperapp/main.dart';
 import 'package:wallpaperapp/scrollcategory.dart';
 
 class SecondScreen extends StatefulWidget {
@@ -130,30 +132,49 @@ class _SecondScreenState extends State<SecondScreen> {
                     fontSize: 25.0,
                     letterSpacing: 2.0),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               scrollcard("Animation", "The latest update wallpaper \n in here.",
-                  'https://cdn.britannica.com/26/175326-050-8E3D0CF1/scene-Dumbo.jpg'),
-              SizedBox(
+                  'https://athomeonthenorthshore.ca/wp-content/uploads/2017/06/Pictou_Law-of-Nature_-porch-800-x-450.jpg'),
+              const SizedBox(
                 height: 15.0,
               ),
               scrollcard(
                   "Nature",
                   "Best nature wallpapere here \n here ready to use",
-                  'https://www.rd.com/wp-content/uploads/2020/04/GettyImages-1093840488-5-scaled.jpg'),
-              SizedBox(
+                  'https://www.edsys.in/wp-content/uploads/tanCEnAOXeOgWqI-800x450-noPad.jpg'),
+              const SizedBox(
                 height: 15.0,
               ),
               scrollcard("Abstract", "To find abstract wallpaper \n tap here.",
                   'https://thevirtualinstructor.com/blog/wp-content/uploads/2013/08/understanding-abstract-art.jpg'),
-              SizedBox(
+              const SizedBox(
                 height: 15.0,
               ),
               scrollcard("Minimalist", "The minimalist wallpaper \n are here.",
                   'https://assets-news.housing.com/news/wp-content/uploads/2022/02/18205828/Minimalist-interior-design-Tips-to-make-your-home-look-minimal.jpg'),
-              // scrollcategory(),
-              // scrollcategory(),
+
+              Center(
+                child: TextButton(
+                    onPressed: () {
+                      setState(() {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Indexpage();
+                            },
+                          ),
+                        );
+                      });
+                    },
+                    child: Icon(
+                      Icons.home_filled,
+                      color: Colors.teal[200],
+                      size: 50.0,
+                    )),
+              )
             ],
           ),
         ),
@@ -181,12 +202,5 @@ class _SecondScreenState extends State<SecondScreen> {
     "https://cdn.pixabay.com/photo/2016/11/08/05/26/woman-1807533_960_720.jpg",
     "https://cdn.pixabay.com/photo/2013/11/28/10/03/autumn-219972_960_720.jpg",
     "https://cdn.pixabay.com/photo/2017/12/17/19/08/away-3024773_960_720.jpg",
-  ];
-
-  List b = [
-    "https://img.freepik.com/premium-photo/vertical-close-up-four-people-enjoying-christmas-dinner-together-toasting-with-champagne-glas_236854-34180_960_720.jpg",
-    "https://img.freepik.com/premium-photo/giant-christmas-tree-with-golden-decorations-gift-boxes-it-concept-seasonal-holidays-new-year-party_151383-291_960_720.jpg",
-    "https://img.freepik.com/free-photo/cute-christmas-background-with-bokeh_1361-3548.jpg?w=996&t=st=1670399565~exp=1670400165~hmac=364c91df535fdad3ec7c1a354a7ec9f51c267b2fe1210b65234b959e1f78ddcf",
-    "https://images.unsplash.com/photo-1670355548794-18c0505584b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
   ];
 }
