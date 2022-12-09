@@ -14,9 +14,6 @@ class _IndexpageState extends State<Indexpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   backgroundColor: Color(0xFFa7bfef),
-      // ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -49,9 +46,6 @@ class _IndexpageState extends State<Indexpage> {
               ),
             ),
           ),
-          // SizedBox(
-          //   height: 20.0,
-          // ),
           const Text(
             'Welcome!',
             style: TextStyle(
@@ -60,9 +54,6 @@ class _IndexpageState extends State<Indexpage> {
               fontWeight: FontWeight.w700,
             ),
           ),
-          // SizedBox(
-          //   height: 10.0,
-          // ),
           const Text(
             '  We make cool wallpapers for you,\nwhich you can enjoy and use for free\n             Lets go to explorer.',
             style: TextStyle(
@@ -85,11 +76,6 @@ class _IndexpageState extends State<Indexpage> {
           ),
 
           listcard2(),
-
-          // listcards('Nature', 'Animations'),
-          // listcards('Amoled', 'Illustration'),
-          // listcards('Minimalist', 'Vintage'),
-          // listcards('Art', 'Abstarct'),
 
           InkWell(
             splashColor: Colors.blueGrey,
