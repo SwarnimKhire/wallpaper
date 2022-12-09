@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaperapp/indexpage.dart';
-import 'package:wallpaperapp/main.dart';
+
 import 'package:wallpaperapp/scrollcategory.dart';
 
 class SecondScreen extends StatefulWidget {
@@ -163,7 +163,7 @@ class _SecondScreenState extends State<SecondScreen> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return Indexpage();
+                              return const Indexpage();
                             },
                           ),
                         );

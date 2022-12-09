@@ -100,7 +100,7 @@ class _IndexpageState extends State<Indexpage> {
                   context,
                   MaterialPageRoute(
                     builder: ((context) {
-                      return SecondScreen();
+                      return const SecondScreen();
                     }),
                   ),
                 );
