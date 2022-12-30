@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+
 import 'package:flutter/material.dart';
 
 class AnimationScreen extends StatefulWidget {
@@ -8,9 +10,8 @@ class AnimationScreen extends StatefulWidget {
 }
 
 class _AnimationScreenState extends State<AnimationScreen> {
-  Color? color1;
-  bool selected = true;
-
+  // int selectedIndex = 0;
+  Key? selectedButton;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,47 +47,73 @@ class _AnimationScreenState extends State<AnimationScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50.0),
-              child: Row(
-                children: [
-                  wallpapertype(typename: "All", color1: Colors.black),
-                  const SizedBox(
-                    width: 30.0,
+              child: Row(children: [
+                InkWell(
+                  // ignore: sort_child_properties_last
+
+                  // ignore: prefer_const_constructors
+                  key: Key('All'),
+                  onTap: () {
+                    setState(() {
+                      selectedButton = Key('All');
+                    });
+                  },
+                  child: Text(
+                    'All',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: selectedButton == Key('All')
+                          ? Colors.black
+                          : Colors.grey,
+                    ),
                   ),
-                  wallpapertype(typename: "Phone", color1: Colors.grey),
-                  const SizedBox(
-                    width: 30.0,
+                ),
+                SizedBox(
+                  width: 30.0,
+                ),
+                InkWell(
+                    key: Key('Mobile'),
+                    onTap: () {
+                      setState(() {
+                        selectedButton = Key('Mobile');
+                      });
+                    },
+                    child: Text(
+                      'Mobile',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                        color: selectedButton == Key('Mobile')
+                            ? Colors.black
+                            : Colors.grey,
+                      ),
+                    )),
+                SizedBox(
+                  width: 30.0,
+                ),
+                InkWell(
+                  key: Key('Desktop'),
+                  onTap: () {
+                    setState(() {
+                      selectedButton = Key('Desktop');
+                    });
+                  },
+                  child: Text(
+                    'Desktop',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: selectedButton == Key('Desktop')
+                          ? Colors.black
+                          : Colors.grey,
+                    ),
                   ),
-                  wallpapertype(typename: "Desktop", color1: Colors.grey),
-                  const SizedBox(
-                    width: 20.0,
-                  ),
-                ],
-              ),
+                ),
+              ]),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  wallpapertype({
-    required String typename,
-    required Color color1,
-  }) {
-    return InkWell(
-      splashColor: Colors.red,
-      onTap: () {
-        setState(() {
-          selected = !selected;
-          print("working");
-        });
-      },
-      child: Text(
-        typename,
-        style: TextStyle(
-            color: selected ? Colors.grey : Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 20.0),
       ),
     );
   }
