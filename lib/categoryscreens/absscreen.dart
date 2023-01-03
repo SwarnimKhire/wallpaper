@@ -1,21 +1,17 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last, unused_import, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:staggered_grid_view_flutter/rendering/sliver_staggered_grid.dart';
-import 'package:staggered_grid_view_flutter/staggered_grid_view_flutter.dart';
-import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
-import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
-import 'package:wallpaperapp/indexpage.dart';
+
 import 'package:wallpaperapp/sorce.dart';
 
-class AnimationScreen extends StatefulWidget {
-  const AnimationScreen({Key? key}) : super(key: key);
+class Abstarctpage extends StatefulWidget {
+  const Abstarctpage({Key? key}) : super(key: key);
 
   @override
-  State<AnimationScreen> createState() => _AnimationScreenState();
+  State<Abstarctpage> createState() => _AbstarctpageState();
 }
 
-class _AnimationScreenState extends State<AnimationScreen> {
+class _AbstarctpageState extends State<Abstarctpage> {
   Key? selectedButton;
   @override
   Widget build(BuildContext context) {
@@ -29,40 +25,18 @@ class _AnimationScreenState extends State<AnimationScreen> {
               const SizedBox(
                 height: 40.0,
               ),
-              Row(
-                children: [
-                  Text(
-                    "Animations",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30.0),
-                  ),
-                  SizedBox(
-                    width: 120,
-                  ),
-                  TextButton(
-                    onPressed: (() {
-                      setState(() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Indexpage()));
-                      });
-                    }),
-                    child: Icon(
-                      Icons.home_outlined,
-                      color: Colors.black,
-                      size: 30.0,
-                    ),
-                  ),
-                ],
+              const Text(
+                "Abstract",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30.0),
               ),
               const SizedBox(
                 height: 20.0,
               ),
               const Text(
-                "The animated wallpaper is the most \nviewing in 2 weeks and best for your \nphone like beautiful screen.",
+                "The abstract wallpaper is the most \ntrending in wallpaper and best the vague and cool \nphone like beautiful screen.",
                 style: TextStyle(
                   color: Colors.grey,
                   fontWeight: FontWeight.bold,
@@ -101,7 +75,6 @@ class _AnimationScreenState extends State<AnimationScreen> {
                       onTap: () {
                         setState(() {
                           selectedButton = Key('Mobile');
-                          sizewallpaper();
                         });
                       },
                       child: Text(
@@ -140,40 +113,9 @@ class _AnimationScreenState extends State<AnimationScreen> {
               SizedBox(
                 height: 10,
               ),
-              Expanded(
-                child: StaggeredGridView.builder(
-                    gridDelegate:
-                        SliverStaggeredGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                            staggeredTileBuilder: (index) =>
-                                const StaggeredTile.fit(1),
-                            staggeredTileCount: 10),
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return imagecard(index);
-                    }),
-              ),
+              sizewallpaper()
             ],
           ),
         ));
   }
-}
-
-imagecard(int index) {
-  return Card(
-    margin: EdgeInsets.zero,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-    child: Container(
-      margin: EdgeInsets.all(8),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(8),
-        child: Image.network(
-          'https://source.unsplash.com/random?q=${index * 2}',
-          fit: BoxFit.cover,
-        ),
-      ),
-    ),
-  );
 }

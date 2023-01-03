@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wallpaperapp/categoryscreens/animation.dart';
+
+import 'package:wallpaperapp/indexpage.dart';
+import 'package:wallpaperapp/secondscreen.dart';
 
 
 
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
 
       initialRoute: '/',
       routes: {
-        '/':(context) => const AnimationScreen(),
+        '/':(context) => const Indexpage(),
 
       },
       //home: SecondScreen(),

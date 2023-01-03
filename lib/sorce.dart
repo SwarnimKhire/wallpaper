@@ -1,16 +1,31 @@
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-
-//String apiKey = "32488941-c01e91ccedbd4a702a1c4f5c9";
 
 
 
-Future getpic() async {
-  String url =
-      'https://source.unsplash.com/random';
-  http.Response response = await http.get(Uri.parse(url));
+import 'package:flutter/material.dart';
 
-  return json.decode(response.body);
+import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
+import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
+
+sizewallpaper() {
+  return Expanded(
+    child: StaggeredGridView.extentBuilder(
+      maxCrossAxisExtent:  150,
+      itemBuilder: (context,index){
+          return Card(
+      margin: EdgeInsets.zero,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      child: Container(
+        margin: const EdgeInsets.all(8),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Image.network(
+            'https://source.unsplash.com/abstract?q=${index * 2}',
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    );
+      },
+      staggeredTileBuilder: (index)=>const StaggeredTile.extent(2, 150),
+  ));
 }
-//http.get(Uri.parse('https://swapi.co/api/people'));

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaperapp/categoryscreens/absscreen.dart';
+import 'package:wallpaperapp/categoryscreens/animation.dart';
+
 import 'package:wallpaperapp/indexpage.dart';
 
 import 'package:wallpaperapp/scrollcategory.dart';
@@ -86,15 +89,16 @@ class _SecondScreenState extends State<SecondScreen> {
                   ],
                 ),
               ),
-              Container(
-                //alignment: Alignment.centerLeft,
-                height: 100.0,
-                width: 150.0,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20.0),
-                  ),
-                ),
+              // Container(
+              //   //alignment: Alignment.centerLeft,
+              //   height: 100.0,
+              //   width: 150.0,
+              //   decoration: const BoxDecoration(
+              //     borderRadius: BorderRadius.all(
+              //       Radius.circular(20.0),
+              //     ),
+              //   ),
+              Expanded(
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
@@ -120,6 +124,7 @@ class _SecondScreenState extends State<SecondScreen> {
                   itemCount: a.length,
                 ),
               ),
+
               const SizedBox(
                 height: 20.0,
               ),
@@ -135,26 +140,52 @@ class _SecondScreenState extends State<SecondScreen> {
               const SizedBox(
                 height: 20.0,
               ),
-              scrollcard("Animation", "The latest update wallpaper \n in here.",
-                  'https://athomeonthenorthshore.ca/wp-content/uploads/2017/06/Pictou_Law-of-Nature_-porch-800-x-450.jpg'),
+              scrollcard(
+                  title1: "Animation",
+                  subtitle: "The latest update wallpaper \n in here.",
+                  link:
+                      'https://athomeonthenorthshore.ca/wp-content/uploads/2017/06/Pictou_Law-of-Nature_-porch-800-x-450.jpg',
+                  ontap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return AnimationScreen();
+                    }));
+                  }),
               const SizedBox(
                 height: 15.0,
               ),
               scrollcard(
-                  "Nature",
-                  "Best nature wallpapere here \n here ready to use",
-                  'https://www.edsys.in/wp-content/uploads/tanCEnAOXeOgWqI-800x450-noPad.jpg'),
+                  title1: "Nature",
+                  subtitle: "Best nature wallpapere here \n here ready to use",
+                  link:
+                      'https://www.edsys.in/wp-content/uploads/tanCEnAOXeOgWqI-800x450-noPad.jpg',
+                  ontap: () {}),
               const SizedBox(
                 height: 15.0,
               ),
-              scrollcard("Abstract", "To find abstract wallpaper \n tap here.",
-                  'https://thevirtualinstructor.com/blog/wp-content/uploads/2013/08/understanding-abstract-art.jpg'),
+              scrollcard(
+                  title1: "Abstract",
+                  subtitle: "To find abstract wallpaper \n tap here.",
+                  link:
+                      'https://thevirtualinstructor.com/blog/wp-content/uploads/2013/08/understanding-abstract-art.jpg',
+                  ontap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const Abstarctpage();
+                          },
+                        ),
+                      );
+                  }),
               const SizedBox(
                 height: 15.0,
               ),
-              scrollcard("Minimalist", "The minimalist wallpaper \n are here.",
-                  'https://assets-news.housing.com/news/wp-content/uploads/2022/02/18205828/Minimalist-interior-design-Tips-to-make-your-home-look-minimal.jpg'),
-
+              scrollcard(
+                  title1: "Minimalist",
+                  subtitle: "The minimalist wallpaper \n are here.",
+                  link:
+                      'https://assets-news.housing.com/news/wp-content/uploads/2022/02/18205828/Minimalist-interior-design-Tips-to-make-your-home-look-minimal.jpg'),
               Center(
                 child: TextButton(
                     onPressed: () {
