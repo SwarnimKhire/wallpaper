@@ -117,14 +117,18 @@ class _AnimationScreenState extends State<AnimationScreen> {
               ),
               Expanded(
                 child: StaggeredGridView.builder(
-                  gridDelegate: SliverStaggeredGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                     mainAxisSpacing: 10,
-                     crossAxisSpacing: 10,
-                     staggeredTileBuilder: (index)=>const StaggeredTile.fit(1),
-                     staggeredTileCount: 10),
-                     itemCount: 10,
-                     itemBuilder: (context,index){return imagecard(index);}),
+                    gridDelegate:
+                        SliverStaggeredGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10,
+                            staggeredTileBuilder: (index) =>
+                                const StaggeredTile.fit(1),
+                            staggeredTileCount: 10),
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return imagecard(index);
+                    }),
               ),
             ],
           ),
@@ -140,7 +144,7 @@ class _AnimationScreenState extends State<AnimationScreen> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(8),
           child: Image.network(
-            'https://source.unsplash.com/random?sig=$index',
+            'https://source.unsplash.com/random?q=${index * 2}',
             fit: BoxFit.cover,
           ),
         ),
