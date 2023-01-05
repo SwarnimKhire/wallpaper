@@ -1,22 +1,22 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last, unused_import, prefer_const_literals_to_create_immutables
+// ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
+import 'package:wallpaperapp/indexpage.dart';
 import 'package:staggered_grid_view_flutter/rendering/sliver_staggered_grid.dart';
 import 'package:staggered_grid_view_flutter/staggered_grid_view_flutter.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
-import 'package:wallpaperapp/indexpage.dart';
 import 'package:wallpaperapp/sorce.dart';
 
-class AnimationScreen extends StatefulWidget {
-  const AnimationScreen({Key? key}) : super(key: key);
+class AbstractPage extends StatefulWidget {
+  const AbstractPage({Key? key}) : super(key: key);
 
   @override
-  State<AnimationScreen> createState() => _AnimationScreenState();
+  State<AbstractPage> createState() => _AbstractPageState();
 }
 
-class _AnimationScreenState extends State<AnimationScreen> {
-  Key? selectedButton;
+class _AbstractPageState extends State<AbstractPage> {
+  Key selectedButton = const Key('All');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,15 +31,16 @@ class _AnimationScreenState extends State<AnimationScreen> {
               ),
               Row(
                 children: [
+                  // ignore: prefer_const_constructors
                   Text(
-                    "Animations",
-                    style: TextStyle(
+                    "Abstract",
+                    style: const TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 30.0),
                   ),
-                  SizedBox(
-                    width: 120,
+                  const SizedBox(
+                    width: 130,
                   ),
                   TextButton(
                     onPressed: (() {
@@ -47,10 +48,10 @@ class _AnimationScreenState extends State<AnimationScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Indexpage()));
+                                builder: (context) => const Indexpage()));
                       });
                     }),
-                    child: Icon(
+                    child: const Icon(
                       Icons.home_outlined,
                       color: Colors.black,
                       size: 30.0,
@@ -62,7 +63,7 @@ class _AnimationScreenState extends State<AnimationScreen> {
                 height: 20.0,
               ),
               const Text(
-                "The animated wallpaper is the most \nviewing in 2 weeks and best for your \nphone like beautiful screen.",
+                "Abstract wallpapers are trending \nin forever and best for your \nphone like beautiful screen.",
                 style: TextStyle(
                   color: Colors.grey,
                   fontWeight: FontWeight.bold,
@@ -76,10 +77,10 @@ class _AnimationScreenState extends State<AnimationScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 50.0),
                 child: Row(children: [
                   InkWell(
-                    key: Key('All'),
+                    key: const Key('All'),
                     onTap: () {
                       setState(() {
-                        selectedButton = Key('All');
+                        selectedButton = const Key('All');
                       });
                     },
                     child: Text(
@@ -87,24 +88,20 @@ class _AnimationScreenState extends State<AnimationScreen> {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 23.0,
-                        color: selectedButton == Key('All')
+                        color: selectedButton == const Key('All')
                             ? Colors.black
                             : Colors.grey,
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 25.0,
                   ),
                   InkWell(
-                      key: Key('Mobile'),
+                      key: const Key('Mobile'),
                       onTap: () {
                         setState(() {
-                          selectedButton = Key('Mobile');
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: ((context) {
-                            return Testgridview();
-                          })));
+                          selectedButton = const Key('Mobile');
                         });
                       },
                       child: Text(
@@ -112,19 +109,19 @@ class _AnimationScreenState extends State<AnimationScreen> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 23.0,
-                          color: selectedButton == Key('Mobile')
+                          color: selectedButton == const Key('Mobile')
                               ? Colors.black
                               : Colors.grey,
                         ),
                       )),
-                  SizedBox(
+                  const SizedBox(
                     width: 25.0,
                   ),
                   InkWell(
-                    key: Key('Desktop'),
+                    key: const Key('Desktop'),
                     onTap: () {
                       setState(() {
-                        selectedButton = Key('Desktop');
+                        selectedButton = const Key('Desktop');
                       });
                     },
                     child: Text(
@@ -132,7 +129,7 @@ class _AnimationScreenState extends State<AnimationScreen> {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 23.0,
-                        color: selectedButton == Key('Desktop')
+                        color: selectedButton == const Key('Desktop')
                             ? Colors.black
                             : Colors.grey,
                       ),
@@ -140,27 +137,85 @@ class _AnimationScreenState extends State<AnimationScreen> {
                   ),
                 ]),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Expanded(
-                child: StaggeredGridView.builder(
-                    gridDelegate:
-                        SliverStaggeredGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                            staggeredTileBuilder: (index) =>
-                                const StaggeredTile.fit(1),
-                            staggeredTileCount: 10),
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return imagecard(index);
-                    }),
-              ),
+              wallpaperGrid(selectedButton)
             ],
           ),
         ));
+  }
+}
+
+wallpaperGrid(Key gridtype) {
+  if (gridtype == const Key('All')) {
+    return Expanded(
+      child: StaggeredGridView.builder(
+          gridDelegate: SliverStaggeredGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
+              staggeredTileCount: 10),
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return imagecard(index);
+          }),
+    );
+  } else if (gridtype == const Key('Mobile')) {
+    return Expanded(
+      child: StaggeredGridView.extentBuilder(
+        maxCrossAxisExtent: 200,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+        staggeredTileBuilder: (index) => const StaggeredTile.extent(1, 250),
+        itemCount: 20,
+        itemBuilder: (context, index) {
+          return Card(
+            margin: EdgeInsets.zero,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            child: Container(
+              margin: const EdgeInsets.all(8),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  'https://source.unsplash.com/random/abstract?q=${index * 2.5}',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }else if(gridtype == const Key('Desktop')){
+    return Expanded(
+      child: StaggeredGridView.extentBuilder(
+        maxCrossAxisExtent: 200,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+        staggeredTileBuilder: (index) => const StaggeredTile.extent(1, 100),
+        itemCount: 20,
+        itemBuilder: (context, index) {
+          return Card(
+            margin: EdgeInsets.zero,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            child: Container(
+              margin: const EdgeInsets.all(8),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  'https://source.unsplash.com/random?q=${index * 3.2}',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
   }
 }
 
@@ -169,7 +224,7 @@ imagecard(int index) {
     margin: EdgeInsets.zero,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
     child: Container(
-      margin: EdgeInsets.all(8),
+      margin: const EdgeInsets.all(8),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: Image.network(

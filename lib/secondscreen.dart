@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallpaperapp/categoryscreens/absscreen.dart';
+import 'package:wallpaperapp/categoryscreens/AbstractPage.dart';
 import 'package:wallpaperapp/categoryscreens/animation.dart';
 
 import 'package:wallpaperapp/indexpage.dart';
@@ -148,7 +148,7 @@ class _SecondScreenState extends State<SecondScreen> {
                   ontap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return AnimationScreen();
+                      return const AnimationScreen();
                     }));
                   }),
               const SizedBox(
@@ -169,14 +169,10 @@ class _SecondScreenState extends State<SecondScreen> {
                   link:
                       'https://thevirtualinstructor.com/blog/wp-content/uploads/2013/08/understanding-abstract-art.jpg',
                   ontap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return const Abstarctpage();
-                          },
-                        ),
-                      );
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: ((context) {
+                      return const AbstractPage();
+                    })));
                   }),
               const SizedBox(
                 height: 15.0,
