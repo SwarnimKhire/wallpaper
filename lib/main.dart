@@ -3,6 +3,7 @@ import 'package:wallpaperapp/categoryscreens/AbstractPage.dart';
 
 // ignore: unused_import
 import 'package:wallpaperapp/indexpage.dart';
+import 'package:wallpaperapp/secondscreen.dart';
 import 'package:wallpaperapp/sorce.dart';
 
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
 
       initialRoute: '/',
       routes: {
-        '/':(context) => const Indexpage(),
+        '/':(context) => const SecondScreen(),
 
       },
       //home: SecondScreen(),

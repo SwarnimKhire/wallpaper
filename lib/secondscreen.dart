@@ -15,14 +15,41 @@ class SecondScreen extends StatefulWidget {
 
 // ignore: camel_case_types
 class _SecondScreenState extends State<SecondScreen> {
-  // List category = [
-  //   "Trending",
-  //   "Popular",
-  //   "Latest",
-  //   "Nature",
-  //   "Animations",
-  //   "Abstract"
-  // ];
+  List category = [
+    "Trending",
+    "Popular",
+    "Latest",
+    "Nature",
+    "Animations",
+    "Abstract"
+  ];
+  String selected = "Trending";
+  List<Map> mostViewed = [
+    {
+      "title": "Animations",
+      "subtext": "The latest update wallpaper  in here.",
+      "link":
+          "https://athomeonthenorthshore.ca/wp-content/uploads/2017/06/Pictou_Law-of-Nature_-porch-800-x-450.jpg"
+    },
+    {
+      "title": "Nature",
+      "subtext": "Best nature wallpapere here ready to use.",
+      "link":
+          "https://www.edsys.in/wp-content/uploads/tanCEnAOXeOgWqI-800x450-noPad.jpg"
+    },
+    {
+      "title": "Abstract",
+      "subtext": "To find abstract wallpaper \n tap here.",
+      "link":
+          "https://thevirtualinstructor.com/blog/wp-content/uploads/2013/08/understanding-abstract-art.jpg"
+    },
+    {
+      "title": "Minimalist",
+      "subtext": "The minimalist wallpaper \n are here.",
+      "link":
+          "https://assets-news.housing.com/news/wp-content/uploads/2022/02/18205828/Minimalist-interior-design-Tips-to-make-your-home-look-minimal.jpg"
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -34,174 +61,108 @@ class _SecondScreenState extends State<SecondScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TextField(
-                // obscureText: true,
-
+              TextField(
                 decoration: InputDecoration(
-                  fillColor: Color(0xFFFBFBFB),
+                  fillColor: const Color(0xFFFBFBFB),
                   filled: true,
                   hintText: 'Find wallpaper',
-                  border: OutlineInputBorder(
+                  border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(10.0),
                       ),
                       borderSide: BorderSide.none),
-                  suffixIcon: Icon(
-                    Icons.screen_search_desktop_rounded,
-                    size: 40.0,
-                    color: Colors.blue,
+                  suffixIcon: Container(
+                    margin: const EdgeInsets.all(6),
+                    decoration: BoxDecoration(
+                        color: Colors.blue[700],
+                        borderRadius: BorderRadius.circular(4)),
+                    child: const Icon(
+                      Icons.search,
+                      size: 20.0,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
               const SizedBox(
                 height: 30.0,
               ),
-              Expanded(
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    Text(
-                      "Trending",
-                      style: TextStyle(
-                          color: Colors.blue[700],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0),
-                    ),
-                    const SizedBox(
-                      width: 30.0,
-                    ),
-                    category("Latest"),
-                    const SizedBox(
-                      width: 30.0,
-                    ),
-                    category("Popular"),
-                    const SizedBox(
-                      width: 30.0,
-                    ),
-                    category("Nature"),
-                    const SizedBox(
-                      width: 30.0,
-                    ),
-                    category("Animation"),
-                    const SizedBox(
-                      width: 30.0,
-                    ),
-                  ],
-                ),
-              ),
-              // Container(
-              //   //alignment: Alignment.centerLeft,
-              //   height: 100.0,
-              //   width: 150.0,
-              //   decoration: const BoxDecoration(
-              //     borderRadius: BorderRadius.all(
-              //       Radius.circular(20.0),
-              //     ),
-              //   ),
-              Expanded(
+              SizedBox(
+                height: 30,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return Row(
-                      children: [
-                        Container(
-                          //alignment: Alignment.centerLeft,
-                          height: 100.0,
-                          width: 150.0,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(20.0),
-                            ),
-                          ),
-                          child: Image.network(a[index]),
-                        ),
-                        const SizedBox(
-                          width: 20.0,
-                        ),
-                      ],
+                    return Padding(
+                      padding: index != category.length - 1
+                          ? const EdgeInsets.only(right: 30.0)
+                          : EdgeInsets.zero,
+                      child: categoryNAme(
+                          categoryname: category[index],
+                          selected: selected == category[index],
+                          ontap: () {
+                            setState(() {
+                              selected = category[index];
+                            });
+                          }),
                     );
                   },
-                  itemCount: a.length,
+                  itemCount: category.length,
                 ),
               ),
-
-              const SizedBox(
-                height: 20.0,
-              ),
-              const Text(
-                "Most Viewing",
-                //RtextAlign: TextAlign.left,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25.0,
-                    letterSpacing: 2.0),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              scrollcard(
-                  title1: "Animation",
-                  subtitle: "The latest update wallpaper \n in here.",
-                  link:
-                      'https://athomeonthenorthshore.ca/wp-content/uploads/2017/06/Pictou_Law-of-Nature_-porch-800-x-450.jpg',
-                  ontap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const AnimationScreen();
-                    }));
-                  }),
-              const SizedBox(
-                height: 15.0,
-              ),
-              scrollcard(
-                  title1: "Nature",
-                  subtitle: "Best nature wallpapere here \n here ready to use",
-                  link:
-                      'https://www.edsys.in/wp-content/uploads/tanCEnAOXeOgWqI-800x450-noPad.jpg',
-                  ontap: () {}),
-              const SizedBox(
-                height: 15.0,
-              ),
-              scrollcard(
-                  title1: "Abstract",
-                  subtitle: "To find abstract wallpaper \n tap here.",
-                  link:
-                      'https://thevirtualinstructor.com/blog/wp-content/uploads/2013/08/understanding-abstract-art.jpg',
-                  ontap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: ((context) {
-                      return const AbstractPage();
-                    })));
-                  }),
-              const SizedBox(
-                height: 15.0,
-              ),
-              scrollcard(
-                  title1: "Minimalist",
-                  subtitle: "The minimalist wallpaper \n are here.",
-                  link:
-                      'https://assets-news.housing.com/news/wp-content/uploads/2022/02/18205828/Minimalist-interior-design-Tips-to-make-your-home-look-minimal.jpg'),
-              Center(
-                child: TextButton(
-                    onPressed: () {
-                      setState(() {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const Indexpage();
-                            },
-                          ),
-                        );
-                      });
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 25.0),
+                child: SizedBox(
+                  height: 130,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: carouselCard(url: name[index]),
+                      );
                     },
-                    child: Icon(
-                      Icons.home_filled,
-                      color: Colors.teal[200],
-                      size: 50.0,
-                    )),
-              )
+                    itemCount: name.length,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // ignore: prefer_const_literals_to_create_immutables
+                children: [
+                  const Text(
+                    "Most Viewing",
+                    //RtextAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                  const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16.0,
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              Expanded(
+                child: ListView.builder(
+                    itemCount: mostViewed.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom:20.0),
+                        child: scrollcard(
+                            title: mostViewed[index]["title"],
+                            subtitle: mostViewed[index]["subtext"],
+                            link: mostViewed[index]["link"]),
+                      );
+                    }),
+              ),
             ],
           ),
         ),
@@ -209,17 +170,36 @@ class _SecondScreenState extends State<SecondScreen> {
     );
   }
 
-  category(String categorname) {
-    return Text(
-      categorname,
-      style: const TextStyle(
-          color: Color(0xFFD3D3D3),
-          fontWeight: FontWeight.bold,
-          fontSize: 20.0),
+  Widget carouselCard({required String url}) {
+    return Container(
+      height: 150.0,
+      width: 200.0,
+      decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(6.0),
+          ),
+          image: DecorationImage(image: NetworkImage(url), fit: BoxFit.cover)),
+      //
     );
   }
 
-  List a = [
+  Widget categoryNAme(
+      {required String categoryname,
+      required bool selected,
+      void Function()? ontap}) {
+    return InkWell(
+      onTap: ontap,
+      child: Text(
+        categoryname,
+        style: TextStyle(
+            color: selected ? Colors.blue : Colors.grey,
+            fontWeight: FontWeight.bold,
+            fontSize: 20.0),
+      ),
+    );
+  }
+
+  List name = [
     "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
     "https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_960_720.jpg",
     "https://cdn.pixabay.com/photo/2017/02/01/22/02/mountain-landscape-2031539_960_720.jpg",
