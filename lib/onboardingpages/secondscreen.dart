@@ -1,9 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 
 import 'package:wallpaperapp/categoryscreens/animation.dart';
-
+import 'package:wallpaperapp/categoryscreens/common_Screen.dart';
 
 import 'package:wallpaperapp/onboardingpages/scrollcategory.dart';
 
@@ -25,15 +23,13 @@ class _SecondScreenState extends State<SecondScreen> {
     "Abstract"
   ];
   String selected = "Trending";
-  
+
   List<Map> mostViewed = [
     {
       "title": "Animations",
       "subtext": "The latest update wallpaper  in here.",
       "link":
           "https://athomeonthenorthshore.ca/wp-content/uploads/2017/06/Pictou_Law-of-Nature_-porch-800-x-450.jpg",
-      
-      
     },
     {
       "title": "Nature",
@@ -161,6 +157,13 @@ class _SecondScreenState extends State<SecondScreen> {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 20.0),
                         child: scrollcard(
+                            ontap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: ((context) {
+                                return CommonScreen(
+                                    screenTitle: mostViewed[index]["title"]);
+                              })));
+                            },
                             title: mostViewed[index]["title"],
                             subtitle: mostViewed[index]["subtext"],
                             link: mostViewed[index]["link"]),

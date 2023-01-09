@@ -1,24 +1,25 @@
-
 import 'package:flutter/material.dart';
-import 'package:wallpaperapp/onboardingpages/indexpage.dart';
 import 'package:staggered_grid_view_flutter/rendering/sliver_staggered_grid.dart';
-
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
+import 'package:wallpaperapp/onboardingpages/indexpage.dart';
 
-class AbstractPage extends StatefulWidget {
-  const AbstractPage({Key? key}) : super(key: key);
+class CommonScreen extends StatefulWidget {
+  final String screenTitle;
+  const CommonScreen({Key? key,required this.screenTitle}) : super(key: key);
 
   @override
-  State<AbstractPage> createState() => _AbstractPageState();
+  State<CommonScreen> createState() => _CommonScreenState();
 }
 
-class _AbstractPageState extends State<AbstractPage> {
-  Key selectedButton = const Key('All');
+class _CommonScreenState extends State<CommonScreen> {
+    Key selectedButton = const Key('All');
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-        backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
         body: Padding(
           padding: const EdgeInsets.all(25.0),
           child: Column(
@@ -31,7 +32,7 @@ class _AbstractPageState extends State<AbstractPage> {
                 children: [
                   // ignore: prefer_const_constructors
                   Text(
-                    "Abstract",
+                    widget.screenTitle,
                     style: const TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -138,14 +139,14 @@ class _AbstractPageState extends State<AbstractPage> {
               const SizedBox(
                 height: 10,
               ),
-              wallpaperGrid(selectedButton)
+              wallpaperGrid(selectedButton, widget.screenTitle)
             ],
           ),
         ));
   }
-}
+} 
+wallpaperGrid(Key gridtype, String title) {
 
-wallpaperGrid(Key gridtype) {
   if (gridtype == const Key('All')) {
     return Expanded(
       child: StaggeredGridView.builder(
@@ -157,7 +158,7 @@ wallpaperGrid(Key gridtype) {
               staggeredTileCount: 10),
           itemCount: 10,
           itemBuilder: (context, index) {
-            return imagecard(index);
+            return imagecard(index, title);
           }),
     );
   } else if (gridtype == const Key('Mobile')) {
@@ -178,7 +179,7 @@ wallpaperGrid(Key gridtype) {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
-                  'https://source.unsplash.com/random/abstract?q=${index * 2.5}',
+                  'https://source.unsplash.com/random/$title?q=${index * 2.5}',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -205,7 +206,7 @@ wallpaperGrid(Key gridtype) {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
-                  'https://source.unsplash.com/random?q=${index * 3.2}',
+                  'https://source.unsplash.com/random/$title?q=${index * 3.2}',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -217,7 +218,7 @@ wallpaperGrid(Key gridtype) {
   }
 }
 
-imagecard(int index) {
+imagecard(int index, String title) {
   return Card(
     margin: EdgeInsets.zero,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -226,10 +227,11 @@ imagecard(int index) {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: Image.network(
-          'https://source.unsplash.com/random?q=${index * 2}',
+          'https://source.unsplash.com/random/$title?q=${index * 2}',
           fit: BoxFit.cover,
         ),
       ),
     ),
   );
 }
+    
