@@ -1,7 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
-import 'package:wallpaperapp/indexpage.dart';
+import 'package:wallpaperapp/onboardingpages/indexpage.dart';
 import 'package:staggered_grid_view_flutter/rendering/sliver_staggered_grid.dart';
 import 'package:staggered_grid_view_flutter/staggered_grid_view_flutter.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';

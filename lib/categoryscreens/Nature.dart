@@ -1,11 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:wallpaperapp/indexpage.dart';
+import 'package:wallpaperapp/onboardingpages/indexpage.dart';
 import 'package:staggered_grid_view_flutter/rendering/sliver_staggered_grid.dart';
-import 'package:staggered_grid_view_flutter/staggered_grid_view_flutter.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
-import 'package:wallpaperapp/sorce.dart';
 
 class AbstractPage extends StatefulWidget {
   const AbstractPage({Key? key}) : super(key: key);

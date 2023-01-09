@@ -1,10 +1,11 @@
+
+
 import 'package:flutter/material.dart';
-import 'package:wallpaperapp/categoryscreens/AbstractPage.dart';
+
 import 'package:wallpaperapp/categoryscreens/animation.dart';
 
-import 'package:wallpaperapp/indexpage.dart';
 
-import 'package:wallpaperapp/scrollcategory.dart';
+import 'package:wallpaperapp/onboardingpages/scrollcategory.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({Key? key}) : super(key: key);
@@ -24,12 +25,15 @@ class _SecondScreenState extends State<SecondScreen> {
     "Abstract"
   ];
   String selected = "Trending";
+  
   List<Map> mostViewed = [
     {
       "title": "Animations",
       "subtext": "The latest update wallpaper  in here.",
       "link":
-          "https://athomeonthenorthshore.ca/wp-content/uploads/2017/06/Pictou_Law-of-Nature_-porch-800-x-450.jpg"
+          "https://athomeonthenorthshore.ca/wp-content/uploads/2017/06/Pictou_Law-of-Nature_-porch-800-x-450.jpg",
+      
+      
     },
     {
       "title": "Nature",
@@ -39,15 +43,15 @@ class _SecondScreenState extends State<SecondScreen> {
     },
     {
       "title": "Abstract",
-      "subtext": "To find abstract wallpaper \n tap here.",
+      "subtext": "To find abstract wallpaper tap here.",
       "link":
           "https://thevirtualinstructor.com/blog/wp-content/uploads/2013/08/understanding-abstract-art.jpg"
     },
     {
       "title": "Minimalist",
-      "subtext": "The minimalist wallpaper \n are here.",
+      "subtext": "The minimalist wallpaper are here.",
       "link":
-          "https://assets-news.housing.com/news/wp-content/uploads/2022/02/18205828/Minimalist-interior-design-Tips-to-make-your-home-look-minimal.jpg"
+          "https://assets-news.housing.com/news/wp-content/uploads/2022/02/18205828/Minimalist-interior-design-Tips-to-make-your-home-look-minimal.jpg",
     },
   ];
 
@@ -155,7 +159,7 @@ class _SecondScreenState extends State<SecondScreen> {
                     itemCount: mostViewed.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(bottom:20.0),
+                        padding: const EdgeInsets.only(bottom: 20.0),
                         child: scrollcard(
                             title: mostViewed[index]["title"],
                             subtitle: mostViewed[index]["subtext"],

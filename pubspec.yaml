@@ -31,7 +31,13 @@ dependencies:
   path_provider: ^2.0.11
   http: ^0.13.5
   staggered_grid_view_flutter: ^0.0.4
-  sticky_headers: ^0.3.0+2
+  
+
+  dio: ^4.0.6
+  image_gallery_saver: ^1.7.1
+  permission_handler: ^10.2.0
+  
+
   
 
 dev_dependencies:

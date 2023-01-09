@@ -1,11 +1,16 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last, unused_import, prefer_const_literals_to_create_immutables
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/physics.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:staggered_grid_view_flutter/rendering/sliver_staggered_grid.dart';
 import 'package:staggered_grid_view_flutter/staggered_grid_view_flutter.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
-import 'package:wallpaperapp/indexpage.dart';
+import 'package:wallpaperapp/onboardingpages/indexpage.dart';
 import 'package:wallpaperapp/sorce.dart';
 
 class AnimationScreen extends StatefulWidget {
@@ -17,6 +22,67 @@ class AnimationScreen extends StatefulWidget {
 
 class _AnimationScreenState extends State<AnimationScreen> {
   Key? selectedButton;
+  // bool loading = false;
+  // Future<bool> saveFile(String url, String filename) async {
+  //   Directory? directory;
+
+  //   try {
+  //     if (Platform.isAndroid) {
+  //       if (await requestPermisiion(Permission.storage)) {
+  //         directory = await getExternalStorageDirectory();
+  //         print(directory?.path);
+  //         String newpath = "";
+  //         List<String>? folders = directory?.path.split("/");
+  //         for (int x = 1; x < folders!.length; x++) {
+  //           String? folder = folders[x];
+  //           if (folder != "Android") {
+  //             newpath += "/" + folder;
+  //           } else {
+  //             break;
+  //           }
+  //         }
+  //         newpath = newpath + "/Wallpap";
+  //         directory = Directory(newpath);
+  //         print(directory.path);
+  //       }
+  //     } else {
+  //       return false;
+  //     }
+  //   } catch (e) {}
+  //   return false;
+  // }
+
+  // requestPermisiion(Permission permission) async {
+  //   if (await permission.isGranted) {
+  //     return true;
+  //   } else {
+  //     var result = await permission.request();
+  //     if (result == PermissionStatus.granted) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   }
+  // }
+
+  // downloadFile() async {
+  //   setState(() {
+  //     loading = true;
+  //   });
+  //   bool downloaded =
+  //       await saveFile('https://source.unsplash.com/random?', "images.jpg");
+
+  //   if (downloaded) {
+  //     print("File downloaded");
+  //   } else {
+  //     print("Error in download");
+  //   }
+
+  //   setState(() {
+  //     loading = false;
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -164,7 +230,7 @@ class _AnimationScreenState extends State<AnimationScreen> {
   }
 }
 
-imagecard(int index) {
+Widget imagecard(int index) {
   return Card(
     margin: EdgeInsets.zero,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),

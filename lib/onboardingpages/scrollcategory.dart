@@ -4,7 +4,7 @@ Widget scrollcard(
     {required String title,
     required String subtitle,
     required String link,
-    void Function()? ontap}) {
+  void Function()? ontap}) {
   return InkWell(
     onTap: ontap,
     child: Row(

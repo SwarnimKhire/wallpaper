@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:wallpaperapp/categoryscreens/AbstractPage.dart';
-
-// ignore: unused_import
-import 'package:wallpaperapp/indexpage.dart';
-import 'package:wallpaperapp/secondscreen.dart';
-import 'package:wallpaperapp/sorce.dart';
+import 'package:wallpaperapp/onboardingpages/indexpage.dart';
 
 
-
-
-void main() {
+void main()  {
+ 
   runApp(const MyApp());
 }
 
@@ -18,15 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-
+    return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/':(context) => const SecondScreen(),
-
+        '/': (context) => const Indexpage(),
       },
       //home: SecondScreen(),
     );
   }
 }
-
