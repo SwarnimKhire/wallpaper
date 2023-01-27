@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:wallpaperapp/categoryscreens/animation.dart';
+
 import 'package:wallpaperapp/categoryscreens/common_Screen.dart';
 
 import 'package:wallpaperapp/onboardingpages/scrollcategory.dart';

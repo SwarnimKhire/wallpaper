@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallpaperapp/categoryscreens/AbstractPage.dart';
-import 'package:wallpaperapp/categoryscreens/animation.dart';
+
 import 'package:wallpaperapp/onboardingpages/indexpage.dart';
 
 
